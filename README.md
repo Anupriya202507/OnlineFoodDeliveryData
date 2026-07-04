@@ -1,7 +1,7 @@
 🍔 Online Food Delivery Data Analysis
 📌 Project Overview
 
-This project analyzes an online food delivery dataset to understand customer behavior, delivery performance, sales trends, and business insights using Python (Pandas, Matplotlib, Plotly) and Power BI.
+This project analyzes an online food delivery dataset to understand customer behavior, delivery performance, sales trends, and business insights using Python (Pandas, Matplotlib, Plotly),SQL and Power BI.
 
 The project includes:
 
@@ -16,6 +16,7 @@ Pandas
 NumPy
 Matplotlib
 Plotly
+SQL
 Power BI
 📂 Data Cleaning & Preprocessing
 
