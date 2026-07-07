@@ -58,6 +58,10 @@ clip(1,5)
 Outlier Detection
 Checked all numeric columns.
 No significant outliers were found.
+
+The Order_Time column contains only 00:00 or missing values. Therefore, meaningful peak-hour analysis could not be performed.
+
+This is the correct approach for a real data analysis project because it avoids creating misleading results.
 **⚙️ Feature Engineering**
 
 The following analytical columns were created.
