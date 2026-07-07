@@ -22,42 +22,23 @@ Power BI
 
 The following preprocessing steps were performed before analysis.
 
-Date Conversion
-Converted Order_Date to datetime datatype.
-Missing Value Handling
-Cancellation Reason
-Missing values were replaced with "No Cancellation Reason".
-Customer Age
-Missing values were filled using proportion-based imputation because the data was uniformly distributed.
-Final Amount
-Negative values were replaced with 0.
-Missing values were calculated using:
-Final_Amount = Order_Value - Discount_Applied
+**Date Conversion** : Converted Order_Date to datetime datatype.
+**Missing Value Handling**
+1.Cancellation Reason Missing values were replaced with "No Cancellation Reason".
+2.Customer Age Missing values were filled using proportion-based imputation because the data was uniformly distributed.
+3.Final Amount Negative values were replaced with 0.Missing values were calculated using:Final_Amount = Order_Value -Discount_Applied.If Discount_Applied = 0, then:Final_Amount = Order_Value
+4.Numeric Columns Missing values were filled using the median for:
+Delivery_Time_Min,Distance_km,Order_Value,Profit_Margin
+5.Ratings:
 
-If Discount_Applied = 0, then:
-
-Final_Amount = Order_Value
-Numeric Columns
-
-Missing values were filled using the median for:
-
-Delivery_Time_Min
-Distance_km
-Order_Value
-Profit_Margin
-Ratings
-
-Delivery Rating
-
+Delivery Rating:
 Filled using grouped averages wherever possible.
 Cancelled orders have no delivery rating, so remaining missing values were filled with the median.
-
-Restaurant Rating
-
+Restaurant Rating:
 Filled using grouped restaurant averages.
 Categorical Columns
 
-Filled missing values using the mode for:
+6.Filled missing values using the mode for:
 
 Customer_Gender
 City
@@ -71,51 +52,39 @@ Removed extra spaces using strip()
 Standardized text using str.title()
 Restaurant Rating Validation
 
-Restaurant ratings were clipped between 1 and 5.
+7.Restaurant ratings were clipped between 1 and 5.
 
 clip(1,5)
 Outlier Detection
 Checked all numeric columns.
 No significant outliers were found.
-⚙️ Feature Engineering
+**⚙️ Feature Engineering**
 
 The following analytical columns were created.
 
-1. Order Day Type
+1. Order Day Type: Created a new column: weekday /weekend using order_date.
 
-Created a new column:
-
-Weekday
-Weekend
-
-using Order_Date.
-
-2. Order Hour
-
-Extracted hour from Order_Time.
+2. Order Hour:Extracted hour from Order_Time.
 
 Note: The Peak Hour indicator currently needs correction because all values are becoming 0.
 
 3. Profit Margin Percentage
-
 Calculated as:
-
 (Profit_Margin / Order_Value) × 100
 4. Delivery Performance Category
-
 Created using:
-
 pd.cut(
 Delivery_Rating,
 bins=[0,3,4,5],
 labels=["Low","Medium","High"]
 )
 5. Customer Age Group
-
 Customer ages were categorized into different age groups for analysis.
+bins = [0, 18, 30, 45, 60, float('inf')]
+labels = ['Teen', 'Young Adult', 'Adult', 'Middle Age', 'Senior']
 
-📊 Power BI Dashboard
-KPI Cards
+**📊 Power BI Dashboard
+KPI Cards**
 
 The dashboard includes:
 
@@ -126,7 +95,8 @@ Average Delivery Time
 Total Profit
 Average Customer Rating
 Cancellation Rate
-📈 Visualizations & Insights
+
+**📈 Visualizations & Insights**
 1. Distribution of Order Value
 
 Chart Used: Histogram / Bar Chart
@@ -184,7 +154,9 @@ Chart Used: Correlation Heatmap
 Insight
 
 Shows positive and negative relationships among numeric features.
-📌 Key Business Insights
+
+**📌 Key Business Insights**
+
 Hyderabad generates the highest number of food orders.
 Indian cuisine is the most popular.
 Most orders are placed on weekdays.
