@@ -21,7 +21,7 @@ Power BI
 📂 Data Cleaning & Preprocessing
 
 The following preprocessing steps were performed before analysis.
-
+**Data Inspection**: Head, tail,Duplicate records has been removed based on customerid field.
 **Date Conversion** : Converted Order_Date to datetime datatype.
 **Missing Value Handling**
 1.Cancellation Reason Missing values were replaced with "No Cancellation Reason".
