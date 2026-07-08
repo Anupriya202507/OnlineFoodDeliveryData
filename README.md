@@ -131,7 +131,7 @@ Insight
 Indian cuisine was ordered the most.
 5. Weekend vs Weekday Orders
 
-Chart Used: Column Chart
+Chart Used: bar Chart
 
 Insight
 
